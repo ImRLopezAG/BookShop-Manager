@@ -2,7 +2,7 @@ const Sequelize = require('sequelize');
 
 const sequelize = require('../server/database.js').sequelize;
 
-const Author = sequelize.define('author', {
+const Category = sequelize.define('category', {
   id: {
     type: Sequelize.INTEGER,
     primaryKey: true,
@@ -13,10 +13,10 @@ const Author = sequelize.define('author', {
     type: Sequelize.STRING,
     allowNull: false,
   },
-  Email: {
+  Description: {
     type: Sequelize.STRING,
     allowNull: false,
   },
 });
 
-module.exports = Author;
+module.exports = Category;

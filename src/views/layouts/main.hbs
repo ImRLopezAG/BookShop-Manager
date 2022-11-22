@@ -4,28 +4,240 @@
     <meta charset='UTF-8' />
     <meta http-equiv='X-UA-Compatible' content='IE=edge' />
     <meta name='viewport' content='width=device-width, initial-scale=1.0' />
-    <link rel='stylesheet' href='assets/css/style.css' />
-    <title>{{pageTitle}}</title>
+    <link rel='stylesheet' href='/assets/css/style.css' />
+    <link
+      rel='shortcut icon'
+      href='/assets/img/favicon.ico'
+      type='image/x-icon'
+    />
+    <title>BookShop - {{pageTitle}}</title>
   </head>
 
   <body>
-    <header></header>
-    <div class='container mt-l'>
-      {{{body}}}
+    <header>
+      <nav class='navbar navbar-dark bg-dark fixed-top'>
+        <div class='container-fluid'>
+          <div class='row align-baseline'>
+            <a class='navbar-brand col' href='/'>Books</a>
+            <a class='navbar-brand col' href='/Authors'>Authors</a>
+            <a class='navbar-brand col' href='/Editorials'>Editorials</a>
+            <a class='navbar-brand col' href='/Categories'>Categories</a>
+          </div>
+          <button
+            class='navbar-toggler'
+            type='button'
+            data-bs-toggle='offcanvas'
+            data-bs-target='#offcanvasDarkNavbar'
+            aria-controls='offcanvasDarkNavbar'
+          >
+            <span class='navbar-toggler-icon'></span>
+          </button>
+
+          <div
+            class='offcanvas offcanvas-end text-bg-dark'
+            tabindex='-1'
+            id='offcanvasDarkNavbar'
+            aria-labelledby='offcanvasDarkNavbarLabel'
+          >
+            <div class='offcanvas-header py-2'>
+              <h3
+                class='offcanvas-title'
+                id='offcanvasDarkNavbarLabel'
+              >BookShop</h3>
+              <button
+                type='button'
+                class='btn-close btn-close-white'
+                data-bs-dismiss='offcanvas'
+                aria-label='Close'
+              ></button>
+            </div>
+            <div class='offcanvas-body py-0'>
+              <ul class='navbar-nav justify-content-end flex-grow-1 pe-3'>
+                <li class='nav-item h5'>
+                  <a class='nav-link active mb-1 py-1' href='/'>
+                    <i class='bi bi-house-fill'></i>
+                    Home
+                  </a>
+                </li>
+                <li class='nav-item mb-0'>
+                  <form class='d-flex mt-1' role='search'>
+                    <input
+                      class='form-control me-2'
+                      type='search'
+                      placeholder='Search'
+                      aria-label='Search'
+                    />
+                    <button class='btn btn-success' type='submit'><i
+                        class='bi bi-search'
+                      ></i></button>
+                  </form>
+                </li>
+                <li class='nav-item text-center'>
+                  <h4 class='mt-1 mb-0 py-0'><i class='bi bi-sliders'></i>
+                    Manage</h4>
+                </li>
+                <li>
+                  <hr class='divider' />
+                </li>
+
+                <li class='nav-item dropdown'>
+                  <a
+                    class='nav-link dropdown-toggle'
+                    href='#'
+                    role='button'
+                    data-bs-toggle='dropdown'
+                    aria-expanded='false'
+                  >
+                    Books
+                  </a>
+                  <ul class='dropdown-menu dropdown-menu-dark'>
+                    <li><a class='dropdown-item' href='/admin/books/create-Books'>Create <i class="bi bi-plus-circle"></i></a></li>
+                    <li>
+                      <hr class='dropdown-divider' />
+                    </li>
+                    <li><a class='dropdown-item' href='/admin/books'>Edit <i class="bi bi-pencil-fill"></i></a></li>
+                  </ul>
+                </li>
+                <li class='nav-item dropdown'>
+                  <a
+                    class='nav-link dropdown-toggle'
+                    href='#'
+                    role='button'
+                    data-bs-toggle='dropdown'
+                    aria-expanded='false'
+                  >
+                    Editorials
+                  </a>
+                  <ul class='dropdown-menu dropdown-menu-dark'>
+                    <li><a class='dropdown-item' href='/admin'>Create <i class="bi bi-plus-circle"></i></a></li>
+                    <li>
+                      <hr class='dropdown-divider' />
+                    </li>
+                    <li><a class='dropdown-item' href='/admin'>Edit <i class="bi bi-pencil-fill"></i></a></li>
+                  </ul>
+                </li>
+                <li class='nav-item dropdown'>
+                  <a
+                    class='nav-link dropdown-toggle'
+                    href='#'
+                    role='button'
+                    data-bs-toggle='dropdown'
+                    aria-expanded='false'
+                  >
+                    Authors
+                  </a>
+                  <ul class='dropdown-menu dropdown-menu-dark'>
+                    <li><a
+                        class='dropdown-item'
+                        href='/admin/authors/create'
+                      >Create <i class="bi bi-plus-circle"></i></a></li>
+                    <li>
+                      <hr class='dropdown-divider' />
+                    </li>
+                    <li><a
+                        class='dropdown-item'
+                        href='/admin/authors/edit'
+                      >Edit <i class="bi bi-pencil-fill"></i></a></li>
+                  </ul>
+                </li>
+                <li class='nav-item dropdown'>
+                  <a
+                    class='nav-link dropdown-toggle'
+                    href='#'
+                    role='button'
+                    data-bs-toggle='dropdown'
+                    aria-expanded='false'
+                  >
+                    Categories
+                  </a>
+                  <ul class='dropdown-menu dropdown-menu-dark'>
+                    <li><a class='dropdown-item' href='/admin'>Create <i class="bi bi-plus-circle"></i></a></li>
+                    <li>
+                      <hr class='dropdown-divider' />
+                    </li>
+                    <li><a class='dropdown-item' href='/admin'>Edit <i class="bi bi-pencil-fill"></i></a></li>
+                  </ul>
+                </li>
+                <li class='nav-item text-center'>
+                  <h4 class='mt-1 mb-0 py-0'><i class='bi bi-funnel-fill'></i>
+                    Filters</h4>
+                </li>
+                <li>
+                  <hr class='divider' />
+                </li>
+                <li class='nav-item dropdown'>
+                  <a
+                    class='nav-link dropdown-toggle'
+                    href='#'
+                    role='button'
+                    data-bs-toggle='dropdown'
+                    aria-expanded='false'
+                  >
+                    Editorial
+                  </a>
+                  <ul class='dropdown-menu dropdown-menu-dark'>
+                    <li><a class='dropdown-item' href='/admin'>Books</a></li>
+                  </ul>
+                </li>
+                <li class='nav-item dropdown'>
+                  <a
+                    class='nav-link dropdown-toggle'
+                    href='#'
+                    role='button'
+                    data-bs-toggle='dropdown'
+                    aria-expanded='false'
+                  >
+                    Authors
+                  </a>
+                  <ul class='dropdown-menu dropdown-menu-dark'>
+                    <li>
+                      <a
+                        class='dropdown-item'
+                        href='/admin/authors/create'
+                      >Books</a></li>
+                  </ul>
+                </li>
+                <li class='nav-item dropdown'>
+                  <a
+                    class='nav-link dropdown-toggle'
+                    href='#'
+                    role='button'
+                    data-bs-toggle='dropdown'
+                    aria-expanded='false'
+                  >
+                    Categories
+                  </a>
+                  <ul class='dropdown-menu dropdown-menu-dark'>
+                    <li><a class='dropdown-item' href='/admin'>Create <i class="bi bi-plus-circle"></i></a></li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <div class='container'>
+      <main class='mt-l'>
+        {{{body}}}
+      </main>
     </div>
-    <footer class='border-top footer text-muted mb-2'>
-      <div class='col-12 gitHub'>
+    <footer class='border-top footer text-muted'>
+      <div class='col-12 mt-1'>
         <h6 class='text-center'>
           Made with ❤️ by
-          <i class='bi bi-github'></i>
           <a
             class='text-decoration-none'
             href='https://github.com/LopezAG17'
             target='_blank'
-          >@LopezAG17</a>
+          >
+            <i class='bi bi-github gitHub'></i>
+            @LopezAG17</a>
         </h6>
       </div>
     </footer>
   </body>
-
+  <script src='/libs/bootstrap/js/bootstrap.bundle.min.js'></script>
+  <script src='/libs/jQuery/jquery.min.js'></script>
+  <script src='/assets/js/main.js'></script>
 </html>

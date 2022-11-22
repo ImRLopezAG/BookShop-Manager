@@ -1,0 +1,119 @@
+<section class='col-md-4 mx-auto'>
+  <h1 class='mx-auto'>Create Book</h1>
+  <form action='' method='post'>
+    <div class='input-group mb-2'>
+      <span class='input-group-text'>Title</span>
+      <input
+        type='text'
+        class='form-control'
+        placeholder='Book Title'
+        id='title'
+        name='Title'
+      />
+    </div>
+    <div class='input-group mb-2'>
+      <span class='input-group-text'>Author</span>
+      <select
+        type='text'
+        class='form-control'
+        placeholder='Book Author'
+        id='author'
+        name='Author'
+      >
+        <option value=''>Select a Author</option>
+        {{#each authors}}
+          <option value='{{this.Name}}'>{{this.name}}</option>
+        {{/each}}
+      </select>
+    </div>
+    <div class='input-group mb-2'>
+      <span class='input-group-text'>Image</span>
+      <input
+        type='text'
+        class='form-control'
+        placeholder='Book Image'
+        id='image'
+        name='Image'
+      />
+    </div>
+    <div class='input-group mb-2'>
+      <span class='input-group-text'>Category</span>
+      <select
+        type='text'
+        class='form-control'
+        placeholder='Book Category'
+        id='category'
+        name='Category'
+      >
+        <option value=''>Select a Category</option>
+        {{#each categories}}
+          <option value='{{this.Name}}'>{{this.name}}</option>
+        {{/each}}
+      </select>
+    </div>
+    <div class='input-group mb-2'>
+      <span class='input-group-text'>Year</span>
+      <input
+        type='number'
+        class='form-control'
+        placeholder='Book Year'
+        id='year'
+        name='Year'
+      />
+    </div>
+    <div class='input-group mb-2'>
+      <span class='input-group-text'>Editorial</span>
+      <select
+        type='text'
+        class='form-control select-right'
+        placeholder='Book Editorial'
+        id='editorial'
+        name='Editorial'
+      >
+        <option value=''>Select Editorial</option>
+        {{#each editorials}}
+          <option value='{{this._id}}'>{{this.Name}}</option>
+        {{/each}}
+      </select>
+    </div>
+    <div class='input-group mb-2'>
+      <span class='input-group-text'>Pages</span>
+      <input
+        type='number'
+        class='form-control'
+        placeholder='Number of Pages'
+        id='pages'
+        name='Pages'
+      />
+    </div>
+    <div class='mb-2'>
+      <label
+        for='description'
+        class='input-group-text description-top text-center'
+      >Description</label>
+      <textarea
+        class='form-control description-bottom'
+        id='description'
+        rows='2'
+        name='Description'
+        placeholder="Book's description"
+      ></textarea>
+    </div>
+    <div>
+      {{#if editMode}}
+        <input type='hidden' id='bookId' name='BookId' value='{{book.id}}' />
+      {{/if}}
+      <button id='getBook' class='btn btn-dark float-end' type='submit'>
+        <input
+          type='hidden'
+          id='#pokemonCreate'
+          name='PokemonCreate'
+          value=''
+        />
+        {{#if editMode}}Edit{{else}}Create{{/if}}
+        Books</button>
+      <a class='btn btn-large btn-dark py-sm-2' href='/admin/edit-books'>
+        back</a>
+    </div>
+  </form>
+</section>
