@@ -1,0 +1,43 @@
+<section class='col-md-4 mx-auto'>
+  <h1>{{#if editMode}}Edit {{else}} Create {{/if}} Author</h1>
+  <form action="{{#if editMode}}/admin/authors/edit-Author{{else}}/admin/authors/create-Authors{{/if}}" method='post' >
+    <div class='input-group mb-2'>
+      <span class='input-group-text'>Name</span>
+      <input
+        type='text'
+        class='form-control'
+        placeholder='Author Name'
+        id='name'
+        name='Name'
+        value='{{#if editMode}}{{author.Name}}{{/if}}'
+      />
+    </div>
+    <div class='input-group mb-2'>
+      <span class='input-group-text'>Email</span>
+      <input
+        type='email'
+        class='form-control'
+        placeholder='Author Email'
+        id='email'
+        name='Email'
+        value='{{#if editMode}}{{author.Email}}{{/if}}'
+      />
+    </div>
+    <div>
+      {{#if editMode}}
+        <input
+          type='hidden'
+          id='authorId'
+          name='AuthorId'
+          value='{{author.id}}'
+        />
+      {{/if}}
+      <button id='getAuthor' class='btn btn-dark float-end' type='submit'>
+        <input type='hidden' id='authorCreate' name='AuthorCreate'/>
+        {{#if editMode}}Edit{{else}}Create{{/if}}
+        Author</button>
+      <a class='btn btn-large btn-dark py-sm-2' href='/admin/authors'>
+        back</a>
+    </div>
+  </form>
+</section>

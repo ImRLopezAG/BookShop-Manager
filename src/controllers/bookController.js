@@ -1,20 +1,26 @@
 const Book = require('../models/bookModel');
+const Category = require('../models/categoryModel');
 
 exports.GetAllBooks = (req, res, next) => {
-  Book.findAll()
-    .then((books) => {
-      const book = books.map((book) => {
-        return book.dataValues;
+  Category.findAll().then((categories) => {
+    const categoryArray = categories.map((cat) => cat.dataValues);
+    Book.findAll()
+      .then((books) => {
+        const book = books.map((book) => {
+          return book.dataValues;
+        });
+        res.render('home', {
+          book: book,
+          pageTitle: 'Books',
+          categories : categoryArray,
+          hasBooks: book.length > 0,
+          hasCategories: categoryArray.length > 0,
+        });
+      })
+      .catch((err) => {
+        console.log(`Error: ${err}`);
       });
-      res.render('home', {
-        book: book,
-        pageTitle: 'Books',
-        hasBooks: book.length > 0,
-      });
-    })
-    .catch((err) => {
-      console.log(`Error: ${err}`);
-    });
+  });
 };
 
 exports.GetBookDescription = (req, res, next) => {

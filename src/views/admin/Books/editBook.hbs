@@ -1,119 +1,181 @@
 <section class='col-md-4 mx-auto'>
   <h1 class='mx-auto'>Create Book</h1>
-  <form action='' method='post'>
-    <div class='input-group mb-2'>
-      <span class='input-group-text'>Title</span>
-      <input
-        type='text'
-        class='form-control'
-        placeholder='Book Title'
-        id='title'
-        name='Title'
-      />
-    </div>
-    <div class='input-group mb-2'>
-      <span class='input-group-text'>Author</span>
-      <select
-        type='text'
-        class='form-control'
-        placeholder='Book Author'
-        id='author'
-        name='Author'
-      >
-        <option value=''>Select a Author</option>
-        {{#each authors}}
-          <option value='{{this.Name}}'>{{this.name}}</option>
-        {{/each}}
-      </select>
-    </div>
-    <div class='input-group mb-2'>
-      <span class='input-group-text'>Image</span>
-      <input
-        type='text'
-        class='form-control'
-        placeholder='Book Image'
-        id='image'
-        name='Image'
-      />
-    </div>
-    <div class='input-group mb-2'>
-      <span class='input-group-text'>Category</span>
-      <select
-        type='text'
-        class='form-control'
-        placeholder='Book Category'
-        id='category'
-        name='Category'
-      >
-        <option value=''>Select a Category</option>
-        {{#each categories}}
-          <option value='{{this.Name}}'>{{this.name}}</option>
-        {{/each}}
-      </select>
-    </div>
-    <div class='input-group mb-2'>
-      <span class='input-group-text'>Year</span>
-      <input
-        type='number'
-        class='form-control'
-        placeholder='Book Year'
-        id='year'
-        name='Year'
-      />
-    </div>
-    <div class='input-group mb-2'>
-      <span class='input-group-text'>Editorial</span>
-      <select
-        type='text'
-        class='form-control select-right'
-        placeholder='Book Editorial'
-        id='editorial'
-        name='Editorial'
-      >
-        <option value=''>Select Editorial</option>
-        {{#each editorials}}
-          <option value='{{this._id}}'>{{this.Name}}</option>
-        {{/each}}
-      </select>
-    </div>
-    <div class='input-group mb-2'>
-      <span class='input-group-text'>Pages</span>
-      <input
-        type='number'
-        class='form-control'
-        placeholder='Number of Pages'
-        id='pages'
-        name='Pages'
-      />
-    </div>
-    <div class='mb-2'>
-      <label
-        for='description'
-        class='input-group-text description-top text-center'
-      >Description</label>
-      <textarea
-        class='form-control description-bottom'
-        id='description'
-        rows='2'
-        name='Description'
-        placeholder="Book's description"
-      ></textarea>
-    </div>
-    <div>
-      {{#if editMode}}
-        <input type='hidden' id='bookId' name='BookId' value='{{book.id}}' />
+  {{#if hasAuthors}}
+    {{#if hasEditorials}}
+      {{#if hasCategories}}
+        <form action='{{#if editMode}}/admin/books/edit-Book{{else}}/admin/books/create-Books{{/if}}' method='post'>
+          <div class='input-group mb-2'>
+            <span class='input-group-text'>Title</span>
+            <input
+              type='text'
+              class='form-control'
+              placeholder='Book Title'
+              id='title'
+              name='Title'
+              value='{{#if editMode}}{{book.Title}}{{/if}}'
+            />
+          </div>
+          <div class='input-group mb-2'>
+            <span class='input-group-text'>Author</span>
+            <select
+              type='text'
+              class='form-control'
+              placeholder='Book Author'
+              id='author'
+              name='Author'
+              selected='{{#if editMode}}{{book.Author}}{{/if}}'
+            >
+              <option value=''>Select a Author</option>
+              {{#each authors as |author|}}
+                <option value='{{author.Name}}'>{{author.Name}}</option>
+              {{/each}}
+            </select>
+          </div>
+          <div class='input-group mb-2'>
+            <span class='input-group-text'>Image</span>
+            <input
+              type='text'
+              class='form-control'
+              placeholder='Book Image'
+              id='image'
+              name='Image'
+              value='{{#if editMode}}{{book.Image}}{{/if}}'
+            />
+          </div>
+          <div class='input-group mb-2'>
+            <span class='input-group-text'>Category</span>
+            <select
+              type='text'
+              class='form-control'
+              placeholder='Book Category'
+              id='category'
+              name='Category'
+              selected='{{#if editMode}}{{book.Category}}{{/if}}'
+            >
+              <option value=''>Select a Category</option>
+              {{#each categories as |category| }}
+                <option value='{{category.Name}}'>{{category.Name}}</option>
+              {{/each}}
+            </select>
+          </div>
+          <div class='input-group mb-2'>
+            <span class='input-group-text'>Year</span>
+            <input
+              type='number'
+              class='form-control'
+              placeholder='Book Year'
+              id='year'
+              name='Year'
+              value='{{#if editMode}}{{book.Year}}{{/if}}'
+            />
+          </div>
+          <div class='input-group mb-2'>
+            <span class='input-group-text'>Editorial</span>
+            <select
+              type='text'
+              class='form-control select-right'
+              placeholder='Book Editorial'
+              id='editorial'
+              name='Editorial'
+              selected='{{#if editMode}}{{book.Editorial}}{{/if}}'
+            >
+              <option value=''>Select Editorial</option>
+              {{#each editorials as |editorial|}}
+                <option value='{{editorial.Name}}'>{{editorial.Name}}</option>
+              {{/each}}
+            </select>
+          </div>
+          <div class='input-group mb-2'>
+            <span class='input-group-text'>Pages</span>
+            <input
+              type='number'
+              class='form-control'
+              placeholder='Number of Pages'
+              id='pages'
+              name='Pages'
+              value='{{#if editMode}}{{book.Pages}}{{/if}}'
+            />
+          </div>
+          <div class='mb-2'>
+            <label
+              for='description'
+              class='input-group-text description-top text-center'
+            >Description</label>
+            <textarea
+              class='form-control description-bottom'
+              id='description'
+              rows='2'
+              name='Description'
+              placeholder="Book's description"
+              value="{{#if editMode}}{{book.Description}}{{/if}}"
+            ></textarea>
+          </div>
+          <div>
+            {{#if editMode}}
+              <input
+                type='hidden'
+                id='bookId'
+                name='BookId'
+                value='{{book.id}}'
+              />
+            {{/if}}
+            <button id='getBook' class='btn btn-dark float-end' type='submit'>
+              <input
+                type='hidden'
+                id='#bookCreate'
+                name='BookCreate'
+                value=''
+              />
+              {{#if editMode}}Edit{{else}}Create{{/if}}
+              Books</button>
+            <a class='btn btn-large btn-dark py-sm-2' href='/admin/edit-books'>
+              back</a>
+          </div>
+        </form>
+      {{else}}
+        <div class='alert alert-danger mx-6' role='alert'>
+          <i class='bi bi-exclamation-triangle-fill'></i>
+          You need to create this item first
+        </div>
+        <a class='btn btn-dark py-sm-2 px-1 mb-2' href='/admin/create-Category'>
+          Create Category</a>
       {{/if}}
-      <button id='getBook' class='btn btn-dark float-end' type='submit'>
-        <input
-          type='hidden'
-          id='#pokemonCreate'
-          name='PokemonCreate'
-          value=''
-        />
-        {{#if editMode}}Edit{{else}}Create{{/if}}
-        Books</button>
-      <a class='btn btn-large btn-dark py-sm-2' href='/admin/edit-books'>
-        back</a>
+    {{else}}
+      <div class='alert alert-danger mx-6' role='alert'>
+        <i class='bi bi-exclamation-triangle-fill'></i>
+        You need to create this item first
+      </div>
+      <a
+        class='btn btn-large btn-dark py-sm-2 mb-2 float-end px-1'
+        href='/admin/create-Editorial'
+      >
+        Create Editorial</a>
+    {{/if}}
+
+  {{else}}
+    <div class='alert alert-danger mx-6' role='alert'>
+      <i class='bi bi-exclamation-triangle-fill'></i>
+      You need to create this item first
     </div>
-  </form>
+    <a
+      class='btn btn-large btn-dark py-sm-2 mb-2 px-1'
+      href='/admin/create-Author'
+    >
+      Create Author</a>
+    {{#if hasEditorials}}{{else}}
+      <a
+        class='btn btn-large btn-dark py-sm-2 mb-2 px-1'
+        href='/admin/create-Editorial'
+      >
+        Create Editorial</a>
+    {{/if}}
+    {{#if hasCategories}}{{else}}
+      <a
+        class='btn btn-large btn-dark py-sm-2 mb-2 px-1'
+        href='/admin/create-Category'
+      >
+        Create Category</a>
+    {{/if}}
+
+  {{/if}}
 </section>

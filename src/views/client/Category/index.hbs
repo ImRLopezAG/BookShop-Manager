@@ -1,5 +1,34 @@
 <section>
-  <h1>
-    Category
-  </h1>
+  <h1>Category Shop</h1>
+
+  {{#if hasCategories}}
+    {{#each categories as |category|}}
+      <div class='card mb-3' style='max-width: 25rem;'>
+        <div class='row g-0'>
+          <div class='col-md-4'>
+            <img
+              src='{{category.Image}}'
+              class='img-fluid rounded-start'
+              alt='{{category.Name}}'
+            />
+          </div>
+          <div class='col-md-8'>
+            <div class='card-body'>
+              <h5 class='card-title'>{{category.Name}}</h5>
+              <h6 class='card-text'>{{category.Description}}</h6>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    {{/each}}
+  {{else}}
+    <div class='alert alert-danger mx-6' role='alert'>
+      <i class='bi bi-exclamation-triangle-fill'></i>
+      You need to create this item first
+    </div>
+    <a class='btn btn-dark' href='/admin/categories/create-Categories'>Create
+      Category</a>
+  {{/if}}
+
 </section>

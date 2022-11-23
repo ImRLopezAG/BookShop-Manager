@@ -1,12 +1,19 @@
 const Editorial = require('../models/editorialModel');
 const Book = require('../models/bookModel');
+const Category = require('../models/categoryModel');
 
 exports.GetAllEditorials = (req, res) => {
-  Editorial.findAll().then((editorials) => {
-    const editorial = editorials.map((e) => e.dataValues);
-    res.render('client/Editorial/index', {
-      editorials: editorial,
-      pageTitle: 'Editorials',
+  Category.findAll().then((categories) => {
+    const categoryArray = categories.map((category) => category.dataValues);
+    Editorial.findAll().then((editorials) => {
+      const editorial = editorials.map((editorial) => editorial.dataValues);
+      res.render('client/Editorial/index', {
+        editorials: editorial,
+        pageTitle: 'Editorials',
+        hasEditorials: editorial.length > 0,
+        categories: categoryArray,
+        hasCategories: categoryArray.length > 0,
+      });
     });
   });
 };
@@ -22,4 +29,4 @@ exports.GetEditorialBooks = (req, res) => {
       });
     });
   });
-}
+};

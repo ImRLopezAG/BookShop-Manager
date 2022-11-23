@@ -1,0 +1,55 @@
+<section class='col-md-4 mx-auto'>
+  <h1>{{#if editMode}}Edit {{else}} Create {{/if}} Editorial</h1>
+  
+  <form action="{{#if editMode}}/admin/editorials/edit-Editorial{{else}}/admin/editorials/create-Editorials{{/if}}" method='post'>
+    <div class='input-group mb-2'>
+      <span class='input-group-text'>Name</span>
+      <input
+        type='text'
+        class='form-control'
+        placeholder='Editorial Name'
+        id='name'
+        name='Name'
+        value='{{#if editMode}}{{editorial.Name}}{{/if}}'
+      />
+    </div>
+    <div class='input-group mb-2'>
+      <span class='input-group-text'>Country</span>
+      <input
+        type='text'
+        class='form-control'
+        placeholder='Editorial Country'
+        id='description'
+        name='Country'
+        value='{{#if editMode}}{{editorial.Country}}{{/if}}'
+      />
+    </div>
+    <div class='input-group mb-2'>
+      <span class='input-group-text'>Phone</span>
+      <input
+        type='text'
+        class='form-control'
+        placeholder='Editorial Phone'
+        id='phone'
+        name='Phone'
+        value='{{#if editMode}}{{editorial.Phone}}{{/if}}'
+      />
+    </div>
+    <div>
+      {{#if editMode}}
+        <input
+          type='hidden'
+          id='editorialId'
+          name='EditorialId'
+          value='{{editorial.id}}'
+        />
+      {{/if}}
+      <button id='getEditorial' class='btn btn-dark float-end' type='submit'>
+        <input type='hidden' id='editorialCreate' name='EditorialCreate'/>
+        {{#if editMode}}Edit{{else}}Create{{/if}}
+        Editorial</button>
+      <a class='btn btn-large btn-dark py-sm-2' href='/admin/editorials'>
+        back</a>
+    </div>
+  </form>
+</section>

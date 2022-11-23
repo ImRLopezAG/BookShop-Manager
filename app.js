@@ -20,9 +20,12 @@ const Author = require('./src/models/authorModel');
 const Editorial = require('./src/models/editorialModel');
 const Category = require('./src/models/categoryModel');
 
+// Helpers
+const statusHelper = require('./src/controllers/helpers/statusHelper');
 // Routes
 const bookShopRouter = require('./src/routes/router');
 const adminRoutes = require('./src/routes/admin');
+const { EqualValue } = require('./src/controllers/helpers/statusHelper');
 
 const app = express();
 
@@ -33,6 +36,7 @@ app.engine(
     defaultLayout: 'main',
     extname: 'hbs',
     handlebars: allowInsecurePrototypeAccess(Handlebars),
+    helpers: { IsEqual : statusHelper.EqualValue },
   })
 );
 app.set('view engine', 'hbs');

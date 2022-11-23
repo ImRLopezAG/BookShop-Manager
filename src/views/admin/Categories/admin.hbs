@@ -1,0 +1,58 @@
+<section>
+  <h1>Categories</h1>
+  {{#if hasCategories}}
+    {{#each categories as |category|}}
+      <div
+        class='card mb-3 col ms-2 px-0 mx-auto'
+        style='min-width: 22rem; max-width: 22rem;'
+      >
+        <div class='row g-0'>
+          <div class='col-md-4'>
+            <img
+              loading='lazy'
+              src='{{category.Image}}'
+              class='img-fluid rounded-start'
+              alt='{{category.Name}}'
+            />
+          </div>
+          <div class='col-md-8 py-0 pb-1'>
+            <div class='card-body px-2 py-2'>
+              <h5 class='card-title mb-0'><strong>Name:
+                </strong>{{category.Name}}</h5>
+              <p class='card-text'>{{category.Description}}</p>
+              <div class='form'>
+                <form action='/edit/Category' method='POST'>
+                  <a
+                    class='btn btn-info float-start'
+                    href='/admin/categories/edit/{{category.id}}?edit=true'
+                  >Edit</a>
+                </form>
+                <form action='/admin/categories/delete' method='post'>
+                  <input
+                    type='hidden'
+                    name='CategoryId'
+                    value='{{category.id}}'
+                    id='categoryId'
+                  />
+                  <button
+                    id='deleteCategories'
+                    class='btn btn-danger float-end'
+                    type='submit'
+                    onclick="return confirm('Are you sure you want to delete this category?');"
+                  >Delete</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    {{/each}}
+  {{else}}
+    <div class='alert alert-danger mx-6' role='alert'>
+      <i class='bi bi-exclamation-triangle-fill'></i>
+      You need to create this item first
+    </div>
+    <a class='btn btn-dark' href='/admin/categories/create-Categories'>Create
+      Category</a>
+  {{/if}}
+</section>

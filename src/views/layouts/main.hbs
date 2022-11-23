@@ -91,29 +91,15 @@
                     Books
                   </a>
                   <ul class='dropdown-menu dropdown-menu-dark'>
-                    <li><a class='dropdown-item' href='/admin/books/create-Books'>Create <i class="bi bi-plus-circle"></i></a></li>
+                    <li><a
+                        class='dropdown-item'
+                        href='/admin/books/create-Books'
+                      >Create <i class='bi bi-plus-circle'></i></a></li>
                     <li>
                       <hr class='dropdown-divider' />
                     </li>
-                    <li><a class='dropdown-item' href='/admin/books'>Edit <i class="bi bi-pencil-fill"></i></a></li>
-                  </ul>
-                </li>
-                <li class='nav-item dropdown'>
-                  <a
-                    class='nav-link dropdown-toggle'
-                    href='#'
-                    role='button'
-                    data-bs-toggle='dropdown'
-                    aria-expanded='false'
-                  >
-                    Editorials
-                  </a>
-                  <ul class='dropdown-menu dropdown-menu-dark'>
-                    <li><a class='dropdown-item' href='/admin'>Create <i class="bi bi-plus-circle"></i></a></li>
-                    <li>
-                      <hr class='dropdown-divider' />
-                    </li>
-                    <li><a class='dropdown-item' href='/admin'>Edit <i class="bi bi-pencil-fill"></i></a></li>
+                    <li><a class='dropdown-item' href='/admin/books'>Edit
+                        <i class='bi bi-pencil-fill'></i></a></li>
                   </ul>
                 </li>
                 <li class='nav-item dropdown'>
@@ -129,15 +115,36 @@
                   <ul class='dropdown-menu dropdown-menu-dark'>
                     <li><a
                         class='dropdown-item'
-                        href='/admin/authors/create'
-                      >Create <i class="bi bi-plus-circle"></i></a></li>
+                        href='/admin/authors/create-Authors'
+                      >Create <i class='bi bi-plus-circle'></i></a></li>
                     <li>
                       <hr class='dropdown-divider' />
                     </li>
+                    <li><a class='dropdown-item' href='/admin/authors'>Edit
+                        <i class='bi bi-pencil-fill'></i></a></li>
+                  </ul>
+                </li>
+                <li class='nav-item dropdown'>
+                  <a
+                    class='nav-link dropdown-toggle'
+                    href='#'
+                    role='button'
+                    data-bs-toggle='dropdown'
+                    aria-expanded='false'
+                  >
+                    Editorials
+                  </a>
+                  <ul class='dropdown-menu dropdown-menu-dark'>
                     <li><a
                         class='dropdown-item'
-                        href='/admin/authors/edit'
-                      >Edit <i class="bi bi-pencil-fill"></i></a></li>
+                        href='/admin/editorials/create-Editorials'
+                      >Create
+                        <i class='bi bi-plus-circle'></i></a></li>
+                    <li>
+                      <hr class='dropdown-divider' />
+                    </li>
+                    <li><a class='dropdown-item' href='/admin/editorials'>Edit
+                        <i class='bi bi-pencil-fill'></i></a></li>
                   </ul>
                 </li>
                 <li class='nav-item dropdown'>
@@ -151,11 +158,15 @@
                     Categories
                   </a>
                   <ul class='dropdown-menu dropdown-menu-dark'>
-                    <li><a class='dropdown-item' href='/admin'>Create <i class="bi bi-plus-circle"></i></a></li>
+                    <li><a
+                        class='dropdown-item'
+                        href='/admin//categories/create-Categories'
+                      >Create <i class='bi bi-plus-circle'></i></a></li>
                     <li>
                       <hr class='dropdown-divider' />
                     </li>
-                    <li><a class='dropdown-item' href='/admin'>Edit <i class="bi bi-pencil-fill"></i></a></li>
+                    <li><a class='dropdown-item' href='/admin/categories'>Edit
+                        <i class='bi bi-pencil-fill'></i></a></li>
                   </ul>
                 </li>
                 <li class='nav-item text-center'>
@@ -164,6 +175,37 @@
                 </li>
                 <li>
                   <hr class='divider' />
+                </li>
+                <li class='nav-item dropdown'>
+                  <a
+                    class='nav-link dropdown-toggle'
+                    href='#'
+                    role='button'
+                    data-bs-toggle='dropdown'
+                    aria-expanded='false'
+                  >
+                    Categories
+                  </a>
+                  {{#if hasCategories}}
+                    <ul class='dropdown-menu dropdown-menu-dark'>
+                      {{#each categories as |category|}}
+                        <li><a
+                            class='dropdown-item'
+                            href='/book/categories/{{category.Name}}'
+                          >{{category.Name}}</a></li>
+                        <li>
+                          <hr class='dropdown-divider' />
+                        </li>
+                      {{/each}}
+                    </ul>
+                  {{else}}
+                    <ul class='dropdown-menu dropdown-menu-dark'>
+                      <li><a
+                          class='dropdown-item'
+                          href='/admin/categories/create-Categories'
+                        >Create <i class='bi bi-plus-circle'></i></a></li>
+                    </ul>
+                  {{/if}}
                 </li>
                 <li class='nav-item dropdown'>
                   <a
@@ -197,20 +239,6 @@
                       >Books</a></li>
                   </ul>
                 </li>
-                <li class='nav-item dropdown'>
-                  <a
-                    class='nav-link dropdown-toggle'
-                    href='#'
-                    role='button'
-                    data-bs-toggle='dropdown'
-                    aria-expanded='false'
-                  >
-                    Categories
-                  </a>
-                  <ul class='dropdown-menu dropdown-menu-dark'>
-                    <li><a class='dropdown-item' href='/admin'>Create <i class="bi bi-plus-circle"></i></a></li>
-                  </ul>
-                </li>
               </ul>
             </div>
           </div>
@@ -239,5 +267,5 @@
   </body>
   <script src='/libs/bootstrap/js/bootstrap.bundle.min.js'></script>
   <script src='/libs/jQuery/jquery.min.js'></script>
-  <script src='/assets/js/main.js'></script>
+  <script src='/assets/js/index.js'></script>
 </html>

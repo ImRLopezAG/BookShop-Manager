@@ -1,5 +1,33 @@
 <section>
-  <h1>
-    Author
-  </h1>
+  <h1>Author Shop</h1>
+
+  {{#if hasAuthors}}
+    {{#each authors as |author|}}
+      <div class='card mb-3' style='max-width: 25rem;'>
+        <div class='row g-0'>
+          <div class='col-md-4'>
+            <img
+              src='{{author.Image}}'
+              class='img-fluid rounded-start'
+              alt='{{author.Name}}'
+            />
+          </div>
+          <div class='col-md-8'>
+            <div class='card-body'>
+              <h5 class='card-title'>{{author.Name}}</h5>
+              <h6 class='card-text'>{{author.Email}}</h6>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    {{/each}}
+  {{else}}
+    <div class='alert alert-danger mx-6' role='alert'>
+      <i class='bi bi-exclamation-triangle-fill'></i>
+      You need to create this item first
+    </div>
+    <a class='btn btn-dark' href='/admin/authors/create-Authors'>Create Author</a>
+  {{/if}}
+
 </section>

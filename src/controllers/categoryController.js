@@ -7,6 +7,7 @@ exports.GetAllCategories = (req, res) => {
     res.render('client/Category/index', {
       categories: category,
       pageTitle: 'Categories',
+      hasCategories: category.length > 0,
     });
   });
 };
