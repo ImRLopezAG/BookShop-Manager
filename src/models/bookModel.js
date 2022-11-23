@@ -19,11 +19,11 @@ const Book = sequelize.define('book', {
   },
   Description: {
     type: Sequelize.STRING,
-    allowNull: false,
+    allowNull: true,
   },
   Image: {
     type: Sequelize.STRING,
-    allowNull: false,
+    allowNull: true,
   },
   Category: {
     type: Sequelize.STRING,

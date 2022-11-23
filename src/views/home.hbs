@@ -1,15 +1,15 @@
-<section>
+<section class="row">
   <h1>Book Shop</h1>
 
   {{#if hasBooks}}
     {{#each books as |book|}}
-      <a href='/book/{{book.id}} ' class='text-decoration-none text-dark'>
+      <a href='/books/{{book.Title}} ' class='text-decoration-none text-dark col'>
         <div class='card mb-3' style='max-width: 25rem;'>
           <div class='row g-0'>
             <div class='col-md-4'>
               <img
                 src='{{book.Image}}'
-                class='img-fluid rounded-start'
+                class='img-fluid rounded-start imageResponsive'
                 alt='{{book.Title}}'
               />
             </div>
@@ -21,6 +21,12 @@
                 <p class='card-text'><small
                     class='text-muted'
                   >{{book.Year}}</small></p>
+                <input
+                  type='hidden'
+                  name='BookTitleCard'
+                  id='bookTitleCard'
+                  value='{{book.Title}}'
+                />
               </div>
             </div>
           </div>
@@ -28,7 +34,7 @@
       </a>
     {{/each}}
   {{else}}
-    <div class='alert alert-danger mx-6' role='alert'>
+    <div class='alert alert-primary mx-6' role='alert'>
       <i class='bi bi-exclamation-triangle-fill'></i>
       You need to create this item first
     </div>

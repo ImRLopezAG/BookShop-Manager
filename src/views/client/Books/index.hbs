@@ -1,5 +1,46 @@
-<section>
-  <h1>
-    Books
-  </h1>
+<section class="row">
+  <div class='row'>
+    <h1 class='col-md-4 px-0'>Book searched:</h1>
+    <p class='text-primary col-1 px-1 h1'>{{totalBooks}}</p>
+  </div>
+  {{#if hasBooks}}
+    {{#each books as |book|}}
+      <a href='/books/{{book.Title}} ' class='text-decoration-none text-dark col ms-2 px-0'>
+        <div class='card mb-3' style='max-width: 25rem;'>
+          <div class='row g-0'>
+            <div class='col-md-4'>
+              <img
+                src='{{book.Image}}'
+                class='img-fluid rounded-start imageResponsive'
+                alt='{{book.Title}}'
+              />
+            </div>
+            <div class='col-md-8'>
+              <div class='card-body'>
+                <h5 class='card-title'>{{book.Title}}</h5>
+                <h6 class='card-text'>{{book.Author}}</h6>
+                <p class='card-text'>{{book.Category}}</p>
+                <p class='card-text'><small
+                    class='text-muted'
+                  >{{book.Year}}</small></p>
+                <input
+                  type='hidden'
+                  name='BookTitleCard'
+                  id='bookTitleCard'
+                  value='{{book.Title}}'
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </a>
+    {{/each}}
+  {{else}}
+    <div class='alert alert-primary mx-6' role='alert'>
+      <i class='bi bi-exclamation-triangle-fill'></i>
+      You need to create this item first
+    </div>
+    <a class='btn btn-dark' href='/admin/books/create-Books'>Create Book</a>
+  {{/if}}
+
 </section>

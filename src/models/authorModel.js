@@ -13,6 +13,10 @@ const Author = sequelize.define('author', {
     type: Sequelize.STRING,
     allowNull: false,
   },
+  Image: {
+    type: Sequelize.STRING,
+    allowNull: true,
+  },
   Email: {
     type: Sequelize.STRING,
     allowNull: false,

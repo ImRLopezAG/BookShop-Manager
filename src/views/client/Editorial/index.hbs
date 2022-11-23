@@ -1,14 +1,14 @@
-<section>
+<section class="row">
   <h1>Editorial Shop</h1>
 
   {{#if hasEditorials}}
     {{#each editorials as |editorial|}}
-      <div class='card mb-3' style='max-width: 25rem;'>
+      <div class='card mb-3 col ms-2 px-0 py-0' style='max-width: 25rem;'>
         <div class='row g-0'>
           <div class='col-md-4'>
             <img
               src='{{editorial.Image}}'
-              class='img-fluid rounded-start'
+              class='img-fluid rounded-start imageResponsive'
               alt='{{editorial.Name}}'
             />
           </div>
@@ -24,7 +24,7 @@
 
     {{/each}}
   {{else}}
-    <div class='alert alert-danger mx-6' role='alert'>
+    <div class='alert alert-primary mx-6' role='alert'>
       <i class='bi bi-exclamation-triangle-fill'></i>
       You need to create this item first
     </div>

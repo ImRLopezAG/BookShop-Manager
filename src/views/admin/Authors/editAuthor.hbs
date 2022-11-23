@@ -1,9 +1,10 @@
 <section class='col-md-4 mx-auto'>
   <h1>{{#if editMode}}Edit {{else}} Create {{/if}} Author</h1>
-  <form action="{{#if editMode}}/admin/authors/edit-Author{{else}}/admin/authors/create-Authors{{/if}}" method='post' >
+  <form enctype="multipart/form-data" method='post' action="{{#if editMode}}/admin/authors/edit-Author{{else}}/admin/authors/create-Authors{{/if}}"  >
     <div class='input-group mb-2'>
       <span class='input-group-text'>Name</span>
       <input
+        required="required"
         type='text'
         class='form-control'
         placeholder='Author Name'
@@ -15,12 +16,24 @@
     <div class='input-group mb-2'>
       <span class='input-group-text'>Email</span>
       <input
+        required="required"
         type='email'
         class='form-control'
         placeholder='Author Email'
         id='email'
         name='Email'
         value='{{#if editMode}}{{author.Email}}{{/if}}'
+      />
+    </div>
+    <div class='input-group mb-2'>
+      <label class='input-group-text '>Image</label>
+      <input
+        {{#if editMode}}{{else}}required="required"{{/if}}
+        type='file'
+        class='form-control'
+        id='image'
+        name='Image'
+        value='{{#if editMode}}{{author.Image}}{{/if}}'
       />
     </div>
     <div>
@@ -32,8 +45,10 @@
           value='{{author.id}}'
         />
       {{/if}}
-      <button id='getAuthor' class='btn btn-dark float-end' type='submit'>
-        <input type='hidden' id='authorCreate' name='AuthorCreate'/>
+      <button id='getAuthor' name="GetAuthor" class='btn btn-dark float-end' type='submit'
+      onclick=""
+      >
+        <input type='hidden' id='authorCreate' name='AuthorCreate' value=""/>
         {{#if editMode}}Edit{{else}}Create{{/if}}
         Author</button>
       <a class='btn btn-large btn-dark py-sm-2' href='/admin/authors'>

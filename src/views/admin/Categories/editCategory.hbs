@@ -1,7 +1,7 @@
 <section class='col-md-4 mx-auto'>
   <h1>{{#if editMode}}Edit {{else}} Create {{/if}} Category</h1>
   
-  <form action="{{#if editMode}}/admin/categories/edit-Category{{else}}/admin/categories/create-Categories{{/if}}" method='post'>
+  <form enctype="multipart/form-data" method='post' action="{{#if editMode}}/admin/categories/edit-Categories{{else}}/admin/categories/create-Categories{{/if}}" >
     <div class='input-group mb-2'>
       <span class='input-group-text'>Name</span>
       <input
@@ -14,9 +14,22 @@
       />
     </div>
     <div class='input-group mb-2'>
+      <span class='input-group-text'>Image</span>
+      <input
+        type='file'
+        {{#if editMode}}{{else}}required="required"{{/if}}
+        class='form-control'
+        placeholder='Category Image'
+        id='image'
+        name='Image'
+        value='{{#if editMode}}{{category.Image}}{{/if}}'
+      />
+    </div>
+    <div class='input-group mb-2'>
       <span class='input-group-text'>Description</span>
       <input
         type='text'
+        required="required"
         class='form-control'
         placeholder='Category Description'
         id='description'
@@ -28,13 +41,13 @@
       {{#if editMode}}
         <input
           type='hidden'
-          id='authorId'
+          id='categoryId'
           name='CategoryId'
           value='{{category.id}}'
         />
       {{/if}}
-      <button id='getCategory' class='btn btn-dark float-end' type='submit'>
-        <input type='hidden' id='authorCreate' name='CategoryCreate'/>
+      <button id='getCategory' name="GetCategory" class='btn btn-dark float-end' type='submit'>
+        <input type='hidden' id='categoryCreate' name='CategoryCreate' value=""/>
         {{#if editMode}}Edit{{else}}Create{{/if}}
         Category</button>
       <a class='btn btn-large btn-dark py-sm-2' href='/admin/categories'>

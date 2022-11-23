@@ -13,6 +13,10 @@ const Editorial = sequelize.define('editorial', {
     type: Sequelize.STRING,
     allowNull: false,
   },
+  Image: {
+    type: Sequelize.STRING,
+    allowNull: true,
+  },
   Country: {
     type: Sequelize.STRING,
     allowNull: false,

@@ -1,11 +1,12 @@
 <section class='col-md-4 mx-auto'>
   <h1>{{#if editMode}}Edit {{else}} Create {{/if}} Editorial</h1>
   
-  <form action="{{#if editMode}}/admin/editorials/edit-Editorial{{else}}/admin/editorials/create-Editorials{{/if}}" method='post'>
+  <form enctype="multipart/form-data" method='post' action="{{#if editMode}}/admin/editorials/edit-Editorial{{else}}/admin/editorials/create-Editorials{{/if}}">
     <div class='input-group mb-2'>
       <span class='input-group-text'>Name</span>
       <input
         type='text'
+        required="required"
         class='form-control'
         placeholder='Editorial Name'
         id='name'
@@ -14,9 +15,22 @@
       />
     </div>
     <div class='input-group mb-2'>
+      <span class='input-group-text'>Image</span>
+      <input
+        type='file'
+        required="required"
+        class='form-control'
+        placeholder='Editorial Image'
+        id='image'
+        name='Image'
+        value='{{#if editMode}}{{editorial.Image}}{{/if}}'
+      />
+    </div>
+    <div class='input-group mb-2'>
       <span class='input-group-text'>Country</span>
       <input
         type='text'
+        required="required"
         class='form-control'
         placeholder='Editorial Country'
         id='description'
@@ -28,6 +42,7 @@
       <span class='input-group-text'>Phone</span>
       <input
         type='text'
+        {{#if editMode}}{{else}}required="required"{{/if}}
         class='form-control'
         placeholder='Editorial Phone'
         id='phone'
@@ -44,8 +59,8 @@
           value='{{editorial.id}}'
         />
       {{/if}}
-      <button id='getEditorial' class='btn btn-dark float-end' type='submit'>
-        <input type='hidden' id='editorialCreate' name='EditorialCreate'/>
+      <button  class='btn btn-dark float-end' type='submit'>
+        <input type='hidden' id='editorialCreate' name='EditorialCreate' value=""/>
         {{#if editMode}}Edit{{else}}Create{{/if}}
         Editorial</button>
       <a class='btn btn-large btn-dark py-sm-2' href='/admin/editorials'>

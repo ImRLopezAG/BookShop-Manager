@@ -1,5 +1,4 @@
 <html lang='en'>
-
   <head>
     <meta charset='UTF-8' />
     <meta http-equiv='X-UA-Compatible' content='IE=edge' />
@@ -60,12 +59,17 @@
                   </a>
                 </li>
                 <li class='nav-item mb-0'>
-                  <form class='d-flex mt-1' role='search'>
+                  <form
+                    class='d-flex mt-1'
+                    method='post'
+                    action='/books/search'
+                  >
                     <input
                       class='form-control me-2'
                       type='search'
                       placeholder='Search'
-                      aria-label='Search'
+                      id='bookTitle'
+                      name='BookTitle'
                     />
                     <button class='btn btn-success' type='submit'><i
                         class='bi bi-search'
@@ -160,7 +164,7 @@
                   <ul class='dropdown-menu dropdown-menu-dark'>
                     <li><a
                         class='dropdown-item'
-                        href='/admin//categories/create-Categories'
+                        href='/admin/categories/create-Categories'
                       >Create <i class='bi bi-plus-circle'></i></a></li>
                     <li>
                       <hr class='dropdown-divider' />
@@ -217,9 +221,26 @@
                   >
                     Editorial
                   </a>
-                  <ul class='dropdown-menu dropdown-menu-dark'>
-                    <li><a class='dropdown-item' href='/admin'>Books</a></li>
-                  </ul>
+                  {{#if hasEditorials}}
+                    <ul class='dropdown-menu dropdown-menu-dark'>
+                      {{#each editorials as |editorial|}}
+                        <li><a
+                            class='dropdown-item'
+                            href='/book/editorials/{{editorial.Name}}'
+                          >{{editorial.Name}}</a></li>
+                        <li>
+                          <hr class='dropdown-divider' />
+                        </li>
+                      {{/each}}
+                    </ul>
+                  {{else}}
+                    <ul class='dropdown-menu dropdown-menu-dark'>
+                      <li><a
+                          class='dropdown-item'
+                          href='/admin/editorials/create-Editorials'
+                        >Create <i class='bi bi-plus-circle'></i></a></li>
+                    </ul>
+                  {{/if}}
                 </li>
                 <li class='nav-item dropdown'>
                   <a
@@ -231,13 +252,26 @@
                   >
                     Authors
                   </a>
-                  <ul class='dropdown-menu dropdown-menu-dark'>
-                    <li>
-                      <a
-                        class='dropdown-item'
-                        href='/admin/authors/create'
-                      >Books</a></li>
-                  </ul>
+                  {{#if hasAuthors}}
+                    <ul class='dropdown-menu dropdown-menu-dark'>
+                      {{#each authors as |author|}}
+                        <li><a
+                            class='dropdown-item'
+                            href='/book/authors/{{author.Name}}'
+                          >{{author.Name}}</a></li>
+                        <li>
+                          <hr class='dropdown-divider' />
+                        </li>
+                      {{/each}}
+                    </ul>
+                  {{else}}
+                    <ul class='dropdown-menu dropdown-menu-dark'>
+                      <li><a
+                          class='dropdown-item'
+                          href='/admin/authors/create-Authors'
+                        >Create <i class='bi bi-plus-circle'></i></a></li>
+                    </ul>
+                  {{/if}}
                 </li>
               </ul>
             </div>
@@ -267,5 +301,4 @@
   </body>
   <script src='/libs/bootstrap/js/bootstrap.bundle.min.js'></script>
   <script src='/libs/jQuery/jquery.min.js'></script>
-  <script src='/assets/js/index.js'></script>
 </html>

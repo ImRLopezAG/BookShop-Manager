@@ -3,9 +3,9 @@
 
 /* @import url('/libs/bootstrap/css/bootstrap.min.css');  */ /* to use local bootstrap*/
 
-/* ::-webkit-scrollbar {
+::-webkit-scrollbar {
   display: none;
-} */
+}
 
 body {
   margin-bottom: 3rem;
@@ -45,11 +45,13 @@ body {
   display: none;
 }
 
-.fill {
+.imageResponsive {
   width: 100%;
   height: 100%;
   object-fit: cover;
+
 }
+
 
 .description-top {
   border-radius: 0.4rem 0.4rem 0% 0%;

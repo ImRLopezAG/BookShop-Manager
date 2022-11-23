@@ -36,10 +36,10 @@ router.post(
   categoryAdminController.PostAddCategory
 );
 router.get(
-  '/categories/edit/:CategoryID',
+  '/categories/edit/:CategoryId',
   categoryAdminController.GetEditCategory
 );
-router.post('/categories/edit', categoryAdminController.PostEditCategory);
+router.post('/categories/edit-Categories', categoryAdminController.PostEditCategory);
 router.post('/categories/delete', categoryAdminController.PostDeleteCategory);
 
 // Editorials

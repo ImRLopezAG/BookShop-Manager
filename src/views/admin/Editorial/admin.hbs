@@ -1,4 +1,4 @@
-<section>
+<section class="row">
   <h1>Editorials</h1>
   {{#if hasEditorials}}
     {{#each editorials as |editorial|}}
@@ -11,7 +11,7 @@
             <img
               loading='lazy'
               src='{{editorial.Image}}'
-              class='img-fluid rounded-start'
+              class='img-fluid rounded-start imageResponsive'
               alt='{{editorial.Name}}'
             />
           </div>

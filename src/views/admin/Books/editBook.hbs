@@ -3,10 +3,11 @@
   {{#if hasAuthors}}
     {{#if hasEditorials}}
       {{#if hasCategories}}
-        <form action='{{#if editMode}}/admin/books/edit-Book{{else}}/admin/books/create-Books{{/if}}' method='post'>
+        <form enctype="multipart/form-data" method='post' action='{{#if editMode}}/admin/books/edit-Book{{else}}/admin/books/create-Books{{/if}}' >
           <div class='input-group mb-2'>
             <span class='input-group-text'>Title</span>
             <input
+              required="required"           
               type='text'
               class='form-control'
               placeholder='Book Title'
@@ -18,6 +19,7 @@
           <div class='input-group mb-2'>
             <span class='input-group-text'>Author</span>
             <select
+              required="required"
               type='text'
               class='form-control'
               placeholder='Book Author'
@@ -34,7 +36,8 @@
           <div class='input-group mb-2'>
             <span class='input-group-text'>Image</span>
             <input
-              type='text'
+              {{#if editMode}}{{else}}required="required"{{/if}}
+              type='file'
               class='form-control'
               placeholder='Book Image'
               id='image'
@@ -46,6 +49,7 @@
             <span class='input-group-text'>Category</span>
             <select
               type='text'
+              required="required"
               class='form-control'
               placeholder='Book Category'
               id='category'
@@ -62,6 +66,7 @@
             <span class='input-group-text'>Year</span>
             <input
               type='number'
+              required="required"
               class='form-control'
               placeholder='Book Year'
               id='year'
@@ -73,6 +78,7 @@
             <span class='input-group-text'>Editorial</span>
             <select
               type='text'
+              required="required"
               class='form-control select-right'
               placeholder='Book Editorial'
               id='editorial'
@@ -89,6 +95,7 @@
             <span class='input-group-text'>Pages</span>
             <input
               type='number'
+              required="required"
               class='form-control'
               placeholder='Number of Pages'
               id='pages'
@@ -99,10 +106,11 @@
           <div class='mb-2'>
             <label
               for='description'
-              class='input-group-text description-top text-center'
+              class='input-group-text C text-center'
             >Description</label>
             <textarea
               class='form-control description-bottom'
+              required="required"
               id='description'
               rows='2'
               name='Description'
@@ -119,7 +127,7 @@
                 value='{{book.id}}'
               />
             {{/if}}
-            <button id='getBook' class='btn btn-dark float-end' type='submit'>
+            <button id='getBook' name="GetBook" class='btn btn-dark float-end' type='submit'>
               <input
                 type='hidden'
                 id='#bookCreate'
@@ -137,7 +145,7 @@
           <i class='bi bi-exclamation-triangle-fill'></i>
           You need to create this item first
         </div>
-        <a class='btn btn-dark py-sm-2 px-1 mb-2' href='/admin/create-Category'>
+        <a class='btn btn-dark py-sm-2 px-1 mb-2' href='/admin/categories/create-Categories'>
           Create Category</a>
       {{/if}}
     {{else}}
@@ -147,7 +155,7 @@
       </div>
       <a
         class='btn btn-large btn-dark py-sm-2 mb-2 float-end px-1'
-        href='/admin/create-Editorial'
+        href='/admin/editorials/create-Editorials'
       >
         Create Editorial</a>
     {{/if}}
@@ -159,23 +167,9 @@
     </div>
     <a
       class='btn btn-large btn-dark py-sm-2 mb-2 px-1'
-      href='/admin/create-Author'
+      href='/admin/authors/create-Authors'
     >
       Create Author</a>
-    {{#if hasEditorials}}{{else}}
-      <a
-        class='btn btn-large btn-dark py-sm-2 mb-2 px-1'
-        href='/admin/create-Editorial'
-      >
-        Create Editorial</a>
-    {{/if}}
-    {{#if hasCategories}}{{else}}
-      <a
-        class='btn btn-large btn-dark py-sm-2 mb-2 px-1'
-        href='/admin/create-Category'
-      >
-        Create Category</a>
-    {{/if}}
 
   {{/if}}
 </section>
