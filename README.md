@@ -1,5 +1,5 @@
-# BookSshop Manager
-You can manage an maintenace books 
+# BookShop Manager
+You can manage an maintenance books 
 
 <div>
 
