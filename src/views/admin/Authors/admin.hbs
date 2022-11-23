@@ -1,10 +1,17 @@
-<section class="row">
-  <h1>Editing Authors</h1>
+<section class='row'>
+  <div>
+    <h1 class='float-start'>Editing Authors</h1>
+    <a
+      class='btn btn-primary float-end'
+      href='/admin/authors/create-Authors'
+    >Create Author
+      <i class='bi bi-plus-circle'></i></a>
+  </div>
   {{#if hasAuthors}}
 
     {{#each authors as |author|}}
       <div class='card mb-3 col ms-2 px-0' style='max-width: 540px;'>
-        <div class='row g-0'>
+        <div class='row g-0 '>
           <div class='col-md-4'>
             <img
               src='{{author.Image}}'
@@ -12,7 +19,7 @@
               alt='{{author.Name}}'
             />
           </div>
-          <div class='col-md-8'>
+          <div class='col-md-8 mb-2'>
             <div class='card-body'>
               <h5 class='card-title'>{{author.Name}}</h5>
               <p class='card-text'>{{author.Email}}</p>

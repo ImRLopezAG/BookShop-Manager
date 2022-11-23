@@ -1,5 +1,12 @@
-<section class="row">
-  <h1>Editorials</h1>
+<section class='row'>
+  <div>
+    <h1 class='float-start'>Editing Editorial</h1>
+    <a
+      class='btn btn-primary float-end'
+      href='/admin/authors/create-Authors'
+    >Create Editorial
+      <i class='bi bi-plus-circle'></i></a>
+  </div>
   {{#if hasEditorials}}
     {{#each editorials as |editorial|}}
       <div

@@ -39,7 +39,6 @@ exports.GetCategoryBooks = (req, res) => {
         const editorial = editorials.map((e) => e.dataValues);
         Category.findOne({ where: { Name: name } }).then((category) => {
           const categoryBook = book.filter((b) => category.Name === b.Category);
-          console.log(categoryBook);
           res.render('client/Category/books', {
             books: categoryBook,
             authors: author,

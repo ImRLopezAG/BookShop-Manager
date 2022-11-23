@@ -1,5 +1,12 @@
-<section class="row">
-  <h1>Categories</h1>
+<section class='row'>
+  <div>
+    <h1 class='float-start'>Editing Categories</h1>
+    <a
+      class='btn btn-primary float-end'
+      href='/admin/categories/create-Categories'
+    >Create Category
+      <i class='bi bi-plus-circle'></i></a>
+  </div>
   {{#if hasCategories}}
     {{#each categories as |category|}}
       <div

@@ -82,7 +82,6 @@ exports.GetBooksDescription = (req, res, next) => {
         const editorial = editorials.map((editorial) => editorial.dataValues);
         Book.findOne({ where: { Title: title } }).then((book) => {
           const bookData = book.dataValues;
-          console.log(bookData);
           if (!bookData) {
             return res.redirect('/');
           }
